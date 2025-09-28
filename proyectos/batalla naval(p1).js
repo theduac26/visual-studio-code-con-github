@@ -1,6 +1,7 @@
 // batalla_naval_2jugadores.js
 const readline = require("readline");
 
+
 // Configurar entrada de usuario en consola
 const rl = readline.createInterface({
   input: process.stdin,
