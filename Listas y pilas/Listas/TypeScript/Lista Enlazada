@@ -1,0 +1,73 @@
+import * as readlineSync from "readline-sync";
+
+class Nodo {
+  valor: number;
+  siguiente: Nodo | null;
+  constructor(valor: number) {
+    this.valor = valor;
+    this.siguiente = null;
+  }
+}
+
+class ListaEnlazada {
+  cabeza: Nodo | null = null;
+
+  agregar(valor: number): void {
+    const nuevo = new Nodo(valor);
+    if (!this.cabeza) this.cabeza = nuevo;
+    else {
+      let actual = this.cabeza;
+      while (actual.siguiente) actual = actual.siguiente;
+      actual.siguiente = nuevo;
+    }
+  }
+
+  eliminar(valor: number): void {
+    if (!this.cabeza) return;
+    if (this.cabeza.valor === valor) {
+      this.cabeza = this.cabeza.siguiente;
+      return;
+    }
+    let actual = this.cabeza;
+    while (actual.siguiente && actual.siguiente.valor !== valor)
+      actual = actual.siguiente;
+    if (actual.siguiente) actual.siguiente = actual.siguiente.siguiente;
+  }
+
+  mostrar(): void {
+    let actual = this.cabeza;
+    const valores: number[] = [];
+    while (actual) {
+      valores.push(actual.valor);
+      actual = actual.siguiente;
+    }
+    console.log("Elementos: ", valores.join(" → "));
+  }
+}
+
+// --- Menú ---
+const lista = new ListaEnlazada();
+let opcion: number;
+
+do {
+  console.log("\n=== MENÚ PRINCIPAL: LISTA ENLAZADA SIMPLE ===");
+  console.log("1. Añadir número");
+  console.log("2. Eliminar número");
+  console.log("3. Mostrar todos los datos");
+  console.log("4. Salir del programa");
+  opcion = parseInt(readlineSync.question("Selecciona una opción: "));
+
+  switch (opcion) {
+    case 1:
+      const valor = parseInt(readlineSync.question("Número a agregar: "));
+      lista.agregar(valor);
+      break;
+    case 2:
+      const elim = parseInt(readlineSync.question("Número a eliminar: "));
+      lista.eliminar(elim);
+      break;
+    case 3:
+      lista.mostrar();
+      break;
+  }
+} while (opcion !== 4);

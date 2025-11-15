@@ -19,10 +19,6 @@ matriz_3d = [
 
 
 valor = int(input("Ingresa el número a buscar: "))
-if valor < 1 or valor > 27:
-   
-    exit()
-encontrado = False
 
 for x in range(3):        
     for y in range(3):    
