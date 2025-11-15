@@ -1,0 +1,88 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    font-family: sans-serif;
+}
+
+/* === ESTILOS DEL JUEGO === */
+
+#game-board {
+    display: grid;
+    /* Crea un grid de 30x30 columnas */
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(30, 1fr);
+    
+    /*  El tamaño del tablero */
+    width: 600px;
+    height: 600px;
+    border: 5px solid #555;
+    background-color: rgb(58, 199, 93);
+}
+
+.cell {
+    /* (No se necesita estilo aquí, pero la clase existe) */
+}
+
+/*  El color de la serpiente */
+.snake {
+    background-color: #1d5fac; 
+    border-radius: 20%;
+}
+
+/*  El color de la comida */
+.food {
+    background-color: #e74c3c;
+    border-radius: 50%;
+}
+
+/* El color de la trampa */
+.trap {
+    background-color: #073e63;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+
+/* === ESTILOS DEL RANKING (GAME OVER) === */
+/* (Esta es la parte que tú pegaste) */
+
+#game-board.game-over-screen {
+    /* Desactivamos el grid y lo hacemos un bloque normal */
+    display: block;
+    background-color: #3a3a3a;
+    color: rgb(75, 235, 97); /* T-u color verde personalizado */
+    padding: 20px;
+    box-sizing: border-box; /* Para que el padding no lo haga más grande */
+}
+
+#game-board.game-over-screen h2 {
+    text-align: center;
+    color: #e74c3c; /* Rojo */
+    margin-top: 10px;
+}
+
+#game-board.game-over-screen ol {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 0 0 0 30px;
+}
+
+#game-board.game-over-screen li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #f1c40f; /* Amarillo */
+}
+
+#game-board.game-over-screen li span {
+    color: #ecf0f1; /* Blanco/gris claro */
+}
+
+#game-board.game-over-screen p {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.2em;
+    color: #bdc3c7; /* Gris */
+}
